@@ -15,10 +15,10 @@ LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 VALIDATE(){
     if [ $? -ne 0 ]
     then
-        echo -e "$2 ... $R FAILURE $N"
+        echo -e "$1 ... $R FAILURE $N"
         exit 1
     else
-        echo -e "$2 ... $G SUCCESS $N"
+        echo -e "$1 ... $G SUCCESS $N"
     fi
 }
 #To check user is having the access or not.
