@@ -44,7 +44,7 @@ then
     VALIDATE "Adding User"
 else
     echo -e "$R user is already created $N....$Y skipping $N"
-
+fi
 mkdir /app &>>$LOG_FILE_NAME
 VALIDATE "/app"
 
