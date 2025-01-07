@@ -1,5 +1,6 @@
 #!/bin/bash
 user_id=$(id -u)
+mkdir -p $LOGS_FOLDER
 
 R="\e[31m"
 G="\e[32m"
