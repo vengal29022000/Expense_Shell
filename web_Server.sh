@@ -48,7 +48,7 @@ VALIDATE "/usr/share/nginx/html"
 unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE "Unzipping Frontend"
 
-cp /home/ec2-user/EXPENSE_SHELL/expense.conf /etc/nginx/default.d/expense.conf &>>LOG_FILE_NAME
+cp /home/ec2-user/Expense_Shell/expense.conf /etc/nginx/default.d/expense.conf &>>LOG_FILE_NAME
 VALIDATE "copying expense.conf file to /etc/nginx/default.d/expense.conf"
 
 systemctl restart nginx &>>$LOG_FILE_NAME
