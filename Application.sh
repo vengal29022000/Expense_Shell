@@ -28,44 +28,44 @@ then
     exit 1
 fi
 
-dnf module disable nodejs -y &>>LOG_FILE_NAME
+dnf module disable nodejs -y &>>$LOG_FILE_NAME
 VALIDATE "Disabling NodeJs"
 
-dnf module enable nodejs:20 -y &>>LOG_FILE_NAME
+dnf module enable nodejs:20 -y &>>$LOG_FILE_NAME
 VALIDATE "Enabling NodeJs:20"
 
-dnf install nodejs -y &>>LOG_FILE_NAME
+dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATE "Installing NodeJs"
 
-useradd expense &>>LOG_FILE_NAME
+useradd expense &>>$LOG_FILE_NAME
 VALIDATE "Adding User"
 
-mkdir /app &>>LOG_FILE_NAME
+mkdir /app &>>$LOG_FILE_NAME
 VALIDATE "/app"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2. &>>LOG_FILE_NAME
 VALIDATE "Downloading Backend..."
 
-cd /app &>>LOG_FILE_NAME
+cd /app &>>$LOG_FILE_NAME
 VALIDATE "/app"
 
-unzip /tmp/backend.zip &>>LOG_FILE_NAME
+unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 VALIDATE "Unzipping Backend"
 
-npm install &>>LOG_FILE_NAME
+npm install &>>$LOG_FILE_NAME
 VALIDATE "Installing Dependencies"
 
 cp /home/ec2-user/EXPENSE_SHELL/backend.service /etc/systemd/system/backend.service &>>LOG_FILE_NAME
 
 #Installing MySQl and Loading the schema
-dnf install mysql -y &>>LOG_FILE_NAME
+dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE "Installing MySql"
 
 mysql -h mysql.vengalareddy.site -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>LOG_FILE_NAME
 VALIDATE "Schema Loading" 
 
-systemctl daemon-reload &>>LOG_FILE_NAME
+systemctl daemon-reload &>>$LOG_FILE_NAME
 
-systemctl enable backend &>>LOG_FILE_NAME
+systemctl enable backend &>>$LOG_FILE_NAME
 
-systemctl start backend &>>LOG_FILE_NAME
+systemctl start backend &>>$LOG_FILE_NAME

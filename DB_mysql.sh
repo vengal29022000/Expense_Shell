@@ -29,17 +29,17 @@ then
 fi
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME      # Printing the script started time in the log file
 
-dnf install mysql-server -y &>>$LOG_FILE_NAME &>>LOG_FILE_NAME
+dnf install mysql-server -y &>>$LOG_FILE_NAME &>>$LOG_FILE_NAME
 VALIDATE "Installing MySql Server"
 
-systemctl enable mysqld &>>LOG_FILE_NAME
+systemctl enable mysqld &>>$LOG_FILE_NAME 
 VALIDATE "Enabling MySql Server"
 
-systemctl start mysqld &>>LOG_FILE_NAME
+systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE "Starting MySql Server"
 
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>LOG_FILE_NAME
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
 VALIDATE "Setting Root Password"
 
 
