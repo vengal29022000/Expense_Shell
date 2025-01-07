@@ -45,7 +45,7 @@ then
 else
     echo -e "$R user is already created $N....$Y skipping $N"
 fi
-mkdir /app &>>$LOG_FILE_NAME
+mkdir -p /app &>>$LOG_FILE_NAME
 VALIDATE "/app"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2. &>>LOG_FILE_NAME
